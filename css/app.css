@@ -117,3 +117,16 @@ footer{
  div .largeTxt{
      font-size: 110px;
  }
+ .green-container{
+     background-color: rgb(34, 94, 6);
+     min-height : 330px;
+ }
+
+ div .trans{
+
+    background-color: transparent;
+ }
+ div .custom{
+     width:250px;
+     height :auto;
+ }

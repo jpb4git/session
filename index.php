@@ -131,19 +131,37 @@ session_start();
         </div>
 
     </div>
-     <div class="container-fluid">
-     <div class="row">
+     <div class="container-fluid green-container">
+     <div class="row trans pt-5">
+     <dic class="col-sm-12"><h2 class="text-center w-100 text-white">Trusted by 66% of the world’s busiest sites</h2></dic>
      </div>
+        <div class="row trans pt-5">
+                <div class="col-sm-12 col-md-3 d-flex justify-content-center">
+                    <img class="custom" src="assets/custom1.svg" alt="">
+                </div>    
+                <div class="col-sm-12 col-md-3 d-flex justify-content-center">
+                    <img class="custom" src="assets/custom2.svg" alt="">
+                </div> 
+                <div class="col-sm-12 col-md-3 d-flex justify-content-center">
+                    <img class="custom" src="assets/custom3.svg" alt="">
+                </div> 
+                <div class="col-sm-12 col-md-3 d-flex justify-content-center">
+                    <img class="custom" src="assets/custom4.svg" alt="">
+                </div>     
+
+                
+               
+        </div>
      </div>   
 </main>
 <footer>
     <div class="container">
-        <div class="row row-footer d-flex justify-content-center align-items-stretch">
+        <div class="row row-footer d-flex justify-content-center align-items-end">
 
-            <div class="col-md-6 d-flex justify-content-center mt-4">
+            <div class="col-md-6 d-flex justify-content-center align-items-end mt-4">
                 <a class="btn btn-warning" href="">Essayez gratuitement notre site</a>
             </div>
-            <div class="col-md-6 d-flex justify-content-center mt-4">
+            <div class="col-md-6 d-flex justify-content-center align-items-end mt-4">
                 <a class="btn btn-warning" href="">Posez nous vos Questions</a>
             </div>
 
