@@ -50,18 +50,18 @@ session_start();
             </div>
             <div class="col-lg-4  mt-5 ml-0 mb-5 text-center ">
                 <h1 class="largeTxt text-white mt-5 p-5">ngShop</h1>
-                <h2 class="text-white mt-5 p-5">Les apps que vous aimez. Et celles que vous allez adorer..
+                <h2 class="text-white mt-5 p-5">Les apps que vous aimez. Et celles que vous allez adorer.
                 </h2>
-                <a class="infoBtn btn btn-warning" href="catalogue.php">Go to the Shop !!!</a>
+                <a class="infoBtn btn btn-warning" href="catalogue2.php">Go to the Shop !!!</a>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-12">
                 <h3 class="text-center mt-5 mb-1">
-                    Lorem ipsum dolor sit.
+                    Les Atouts nbShop
                 </h3>
                 <h3 class="text-center mt-1 mb-5">
-                    consectetur adipisicing elit.
+                   
                 </h3>
             </div>
             <div class="col-sm-12 green-bottom-line">
@@ -90,7 +90,7 @@ session_start();
                     <li class="ml-5 mr-5 text-center">
 
                         <img class="svg-icon" src="assets/icon-Web-and-Mobile-Applications-green.svg" alt="">
-                        <h5>Livraison just in time </h5>
+                        <h5>Livraison just-in-time </h5>
                     </li>
                 </ul>
 
