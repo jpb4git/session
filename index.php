@@ -45,15 +45,13 @@ session_start();
     <div class="container-fluid">
         <div class="row bandeau">
             <div class="col-lg-2 ml-4 mt-5 "></div>
-            <div class="col-lg-4 ml-4 mt-5 ">
-                <img class="img-fluid w-75" src="assets/icon-hub-yellow.svg" alt="">
+            <div class="col-lg-4 ml-4 mt-5 text-center">
+                <img class="img-fluid w-50" src="assets/icon-hub-yellow.svg" alt="">
             </div>
-            <div class="col-lg-4  mt-5 ml-5">
-                <h1 class="text-white mt-2">ngShop</h1>
-                <h4 class="text-white mt-5">Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
-                    laudantium repellat soluta pariatur modi suscipit obcaecati ducimus dolorem accusamus quasi
-                    minus, officia incidunt sit vitae asperiores facilis est vero? In.
-                </h4>
+            <div class="col-lg-4  mt-5 ml-0 mb-5 text-center ">
+                <h1 class="largeTxt text-white mt-5 p-5">ngShop</h1>
+                <h2 class="text-white mt-5 p-5">Les apps que vous aimez. Et celles que vous allez adorer..
+                </h2>
                 <a class="infoBtn btn btn-warning" href="catalogue.php">Go to the Shop !!!</a>
             </div>
         </div>
@@ -72,27 +70,27 @@ session_start();
                     <li class="ml-5 mr-5 text-center">
 
                         <img class="svg-icon" src="assets/icon-Cloud-green.svg" alt="">
-                        <h5>lorem</h5>
+                        <h5>Cloud</h5>
                     </li>
                     <li class="ml-5 mr-5 text-center">
 
                         <img class="svg-icon" src="assets/icon-Load-Balancing-green.svg" alt="">
-                        <h5>lorem</h5>
+                        <h5>portabilité</h5>
                     </li>
                     <li class="ml-5 mr-5 text-center">
 
                         <img class="svg-icon" src="assets/icon-Microservices-green.svg" alt="">
-                        <h5>lorem</h5>
+                        <h5>gestion des stocks</h5>
                     </li>
                     <li class="ml-5 mr-5 text-center">
 
                         <img class="svg-icon" src="assets/icon-Security-green.svg" alt="">
-                        <h5>lorem</h5>
+                        <h5>paiement sécurisé</h5>
                     </li>
                     <li class="ml-5 mr-5 text-center">
 
                         <img class="svg-icon" src="assets/icon-Web-and-Mobile-Applications-green.svg" alt="">
-                        <h5>lorem</h5>
+                        <h5>Livraison just in time </h5>
                     </li>
                 </ul>
 
@@ -101,16 +99,14 @@ session_start();
                 <div class="col-sm-12 green-bottom-line">
                     <div class="row p-5 d-flex justify-content-end">
                         <div class="col-lg-7 p-5 ml-3 d-flex flex-column justify-content-end">
-                            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer eleifend, est vitae
-                                aliquet PLACETAT, tellus orci dapibus turpis, non rhoncus justo mauris ut magna.
+                            <h2>Les apps ont le pouvoir de changer la façon dont vous faites tout ce qui vous passionne : créer, apprendre, jouer… ou tout simplement être plus productif. ngShop est l’endroit idéal pour découvrir de nouvelles apps qui vous feront vivre vos passions comme jamais.
                             </h2>
                             <a class=" infoBtn btn btn-warning" href="">Lorem </a>
                         </div>
                         <div class="col-lg-3 d-flex flex-column justify-content-center text-center">
                             <img class="img-head img-fluid rounded-circle text-center"
-                                 src="assets/office-and-admin-work.jpg" alt="">
-                            <h6>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci corporis cum
-                                impedit! </h6>
+                                 src="assets/office-and-admin-work.jpg" alt="Aaron">
+                            <h6 class="mt-3 ml-0">AARON MARY -- responsable Développement</h6>
                         </div>
                     </div>
                 </div>
@@ -135,7 +131,10 @@ session_start();
         </div>
 
     </div>
-
+     <div class="container-fluid">
+     <div class="row">
+     </div>
+     </div>   
 </main>
 <footer>
     <div class="container">

@@ -34,10 +34,10 @@ $articles = generateCatalogue();
                     <a class="nav-link" href="index.php">Home </a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="catalogue.php">Catalogue<span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="catalogue2.php">Catalogue<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="catalogue2.php">Panier</a>
+                    <a class="nav-link" href="panier.php">Panier</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#"></a>
