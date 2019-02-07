@@ -8,7 +8,7 @@ if (isset($_POST) && !empty($_POST)) {
     //-----------------------------------------------------------------------------------------------------------------
     // ajout article au panier
     //-----------------------------------------------------------------------------------------------------------------
-    if (isset($_POST['ajout']) && $_POST['ajout'] == "mettre à jour") {
+    if (isset($_POST['ajout']) && $_POST['ajout'] == "Ajouter au panier") {
         //echo 'passe' . '<br>';
         $myPost = $_POST;
         $u = 0;
@@ -27,7 +27,7 @@ if (isset($_POST) && !empty($_POST)) {
 
     foreach ($_POST as $key => $value) {
         if (substr($key, 0, 10) == "deleteItem") {
-           // echo "method delete de ouf <br>" . 'id a delete : ' . substr($key, 10) . '<br>';
+            // echo "method delete de ouf <br>" . 'id a delete : ' . substr($key, 10) . '<br>';
             unset ($_SESSION['id_' . substr($key, 10)]);
         }
     }
@@ -46,7 +46,7 @@ if (isset($_POST) && !empty($_POST)) {
                 if (is_numeric($value)) {
                     $_SESSION['id_' . substr($key, 8)] ['qts'] = $value;
                 } else {
-                   // echo "'msgError'.substr($key, 8)]";
+                    // echo "'msgError'.substr($key, 8)]";
                     $_SESSION['msgError' . substr($key, 8)] = "valeur numérique Obligatoire!";
                 }
             }
@@ -77,41 +77,108 @@ $articles = generateCatalogue();
 
 
 ?>
-<!--// front end
-//--------------------------------------------------------------- -->
-<form action="panier.php" method="post">
-    <?php
-    foreach ($_SESSION as $key => $value) {
-        // on recupère  l'id sans le prefixe
-        $k = substr($key, 3);
-        //echo '<br>' . ($k);
-        // test si la cle n'est pas msgError
-        if (substr($key, 0, 3) == "id_") {
+<!DOCTYPE html>
+<html lang="fr">
 
-            // l'article existe t'il dans l'array d'article
-            if (isExistArticle($k)) {
-                //echo " exist dans la base" . "<br>";
-                $art = getArticleInfo($k);
-                var_dump($art);
-                ?>
-                <input type="text" name="modifQts<?php echo $art['id'] ?>"
-                       value="<?php echo $_SESSION['id_' . $k]['qts'] ?>">
-                <?php if (isset($_SESSION['msgError' . $art['id']])) {
-                    // on affiche le message d'erreur pour cette Qts
-                    echo $_SESSION['msgError' . $art['id']];
-                    //on supprime le message d'errur apres usage
-                    unset($_SESSION['msgError' . $art['id']]);
-                } ?>
-                <input type="submit" name="deleteItem<?php echo $art['id'] ?>" value="supprimer cet article">
-                <?php
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique en Ligne</title>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+          integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/app.css">
+</head>
+
+<body>
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">NgShop</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="index.php">Home </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="catalogue2.php">Catalogue<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="panier.php">Panier</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"></a>
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</header>
+<main>
+    <div class="container-fluid">
+        <?php include 'header.php'; ?>
+    </div>
+    <div class="container">
+        <form action="panier.php" method="post">
+            <div class="row">
+                <h1 class="text-center w-100 p-3 m-3 rounded bg-success text-white">Panier</h1>
+                <h1 class="badge  w-100 p-3 m-3">Article(s) ajouté(s)</h1>
+            </div>
+            <div class="row">
+            <?php
+            $err = false;
+            foreach ($_SESSION as $key => $value) {
+                // on recupère  l'id sans le prefixe
+                $k = substr($key, 3);
+
+                // test si la cle n'est pas msgError
+                if (substr($key, 0, 3) == "id_") {
+
+                    // l'article existe t'il dans l'array d'article
+                    if (isExistArticle($k)) {
+
+                    $art = getArticleInfo($k);
+
+                    $err = isset($_SESSION['msgError' . $art['id']]);
+
+                        if (isset($_SESSION['msgError' . $art['id']])) {
+                            // on affiche le message d'erreur pour cette Qts
+                            ?>
+                            <span class="w-100 p-3 bg-danger text-white text-center"><?php echo $_SESSION['msgError' . $art['id']] ?></span>
+                            <?php
+                            //on supprime le message d'errur apres usage
+                            unset($_SESSION['msgError' . $art['id']]);
+                        }
+                        if ($err){   ?>
+                            <div class="wcolMax col-md-12 d-flex flex-inline justify-content-between align-items-center bg-warning">
+                        <?php
+                        }else{
+                        ?>
+                        <div class="wcolMax col-md-12 d-flex flex-inline justify-content-between align-items-center ">
+                        <?php } ?>
+                        <img src="<?php echo $art['url']; ?> " class="art-img-px" width="45" height="45" alt="...">
+                            <?php echo $art['nom']; ?>
+                            <p class="p-3 m-3">
+                                <?= $art['desc'] ?>
+                                <input class="width-qts" type="text" name="modifQts<?php echo $art['id'] ?>" value="<?php echo $_SESSION['id_' . $k]['qts'] ?>" size="4">
+                                <input class="btn btn-outline-danger" type="submit" name="deleteItem<?php echo $art['id'] ?>" value="supprimer cet article">
+                                <span class="bg-primary text-white p-3"><?= $art['prix'] . "  " . MajDevise("euros") ?></span>
+                            </p>
+                        </div>
+                        <?php
+                    }
+                }
             }
-        }
-    }
-
-    ?><br>
-    <input type="submit" id="" name="recalcule" value="recalculer le panier">
-    <input type="submit" id="" name="vider" value="vider le panier">
-    <br>
-    <?php echo "Total  : " . $total?>
-
-</form>
+            ?>
+            <div class="mb-5 p-5 wcolMax col-md-12 d-flex flex-inline justify-content-between align-items-center">
+              <input class="btn btn-outline-secondary" type="submit" id="" name="recalcule" value="recalculer le panier">
+              <input class="btn btn-danger" type="submit" id="" name="vider" value="vider le panier">
+              <div class="p-3 text-white bg-success rounded">
+                  <?php echo "Total  : " . $total ?>
+              </div>
+            </div>
+        </form>
