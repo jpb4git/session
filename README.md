@@ -37,11 +37,12 @@ vous pouvez changer le root du server par la ligne
 root /var/www/[VOtreDossierRoot]
 ```
 //après location ajouter ces lignes pour la gestion  de PHP par Nginx
-
+```
 location ~ \.PHP$ {
    include snippets/fastcgi-php.conf;
   fastcgi_pass unix:/run/PHP/php7.2-fpm.sock;
 }
+```
 
 ## Configure  php
 
@@ -50,20 +51,24 @@ location ~ \.PHP$ {
 ## Running step 3 (terminal mode)
 
 
-on the root  folder open terminal and do: 
+une application en mode terminal est accecible à la racine du site: 
+ tapez  :
+ ```
  ngshop 
+```
 
-
-you can have some kind of help on command  by use  the --help command 
+vous disposez d'une aide el ligne en passant par la commande 
+ 
+```
 ngshop --help
-
+```
 
 
 
 
 ## Deployment
 placez ce repo dans votre www.
- Appelez-le via le browser par localhost/VotreRepo/
+Appelez-le via le browser par localhost/VotreRepo/
 
 
 
