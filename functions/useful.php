@@ -1,5 +1,8 @@
 <?php
 
+function jdebug($var){
+    highlight_string("<?php\n\$data =\n" . var_export($var, true) . ";\n?>");
+}
 /**
  * @param $devise  String de la device utilisée
  * @return string   la device avec la premiere lettre majuscule

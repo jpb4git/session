@@ -9,14 +9,13 @@ if (isset($_POST) && !empty($_POST)) {
     // ajout article au panier
     //-----------------------------------------------------------------------------------------------------------------
     if (isset($_POST['ajout']) && $_POST['ajout'] == "Ajouter au panier") {
-        //echo 'passe' . '<br>';
-        $myPost = $_POST;
+        
         $u = 0;
         foreach ($_POST as $key => $value) {
             if (is_numeric($key)) {
                 $u = $key + 1;
                 if (!array_key_exists('id_' . $u, $_SESSION)) {
-                    $_SESSION['id_' . $u] = ['qts' => 1];
+                    $_SESSION['panier']['id_' . $u] = ['qts' => 1];
                 }
             }
         }
@@ -28,14 +27,14 @@ if (isset($_POST) && !empty($_POST)) {
     foreach ($_POST as $key => $value) {
         if (substr($key, 0, 10) == "deleteItem") {
             // echo "method delete de ouf <br>" . 'id a delete : ' . substr($key, 10) . '<br>';
-            unset ($_SESSION['id_' . substr($key, 10)]);
+            unset ($_SESSION['panier']['id_' . substr($key, 10)]);
         }
     }
 
     //-----------------------------------------------------------------------------------------------------------------
     // recalcule du prix global
     //-----------------------------------------------------------------------------------------------------------------
-    $total = totalPanier($_SESSION);
+    $total = totalPanier($_SESSION['panier']);
     if (isset($_POST['recalcule'])) {
         //echo " method recalcule <br>";
         // mise à jour Qts et msgError
@@ -44,7 +43,7 @@ if (isset($_POST) && !empty($_POST)) {
             if (substr($key, 0, 8) == "modifQts") {
                 // si on est numeric
                 if (is_numeric($value)) {
-                    $_SESSION['id_' . substr($key, 8)] ['qts'] = $value;
+                    $_SESSION['panier']['id_' . substr($key, 8)] ['qts'] = $value;
                 } else {
                     // echo "'msgError'.substr($key, 8)]";
                     $_SESSION['msgError' . substr($key, 8)] = "valeur numérique Obligatoire!";
@@ -52,28 +51,21 @@ if (isset($_POST) && !empty($_POST)) {
             }
         }
         // recalcule du prix final
-        $total = totalPanier($_SESSION);
+        $total = totalPanier($_SESSION['panier']);
     }
 
     //-----------------------------------------------------------------------------------------------------------------
     // vider le panier session destroy
     //-----------------------------------------------------------------------------------------------------------------
     if (isset($_POST['vider'])) {
-        session_destroy();
+        unset ($_SESSION['panier']);
         header('Location: catalogue2.php');
+
     }
 }
-
-
-/*
- echo "----------------------------------------------------------<br>Session : ";
-var_dump($_SESSION);
-echo '<br>';
-echo "----------------------------------------------------------<br>";
-*/
-
 // affecte la listes des articles au format Array;
 $articles = generateCatalogue();
+//jdebug($_SESSION);
 
 
 ?>
@@ -83,7 +75,7 @@ $articles = generateCatalogue();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Boutique en Ligne</title>
+    <title>Panier ngShop</title>
     <link href="https://fonts.googleapis.com/css?family=Ubuntu+Condensed" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
@@ -131,7 +123,7 @@ $articles = generateCatalogue();
             <div class="row">
             <?php
             $err = false;
-            foreach ($_SESSION as $key => $value) {
+            foreach ($_SESSION['panier'] as $key => $value) {
                 // on recupère  l'id sans le prefixe
                 $k = substr($key, 3);
 
@@ -164,7 +156,7 @@ $articles = generateCatalogue();
                             <?php echo $art['nom']; ?>
                             <p class="p-3 m-3">
                                 <?= $art['desc'] ?>
-                                <input class="width-qts" type="text" name="modifQts<?php echo $art['id'] ?>" value="<?php echo $_SESSION['id_' . $k]['qts'] ?>" size="4">
+                                <input class="width-qts" type="text" name="modifQts<?php echo $art['id'] ?>" value="<?php echo $_SESSION['panier']['id_' . $k]['qts'] ?>" size="4">
                                 <input class="btn btn-outline-danger" type="submit" name="deleteItem<?php echo $art['id'] ?>" value="supprimer cet article">
                                 <span class="bg-primary text-white p-3"><?= $art['prix'] . "  " . MajDevise("euros") ?></span>
                             </p>
